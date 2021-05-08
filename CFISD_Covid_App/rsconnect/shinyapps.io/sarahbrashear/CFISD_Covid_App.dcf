@@ -5,8 +5,8 @@ account: sarahbrashear
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4098442
-bundleId: 4574313
+bundleId: 4574344
 url: https://sarahbrashear.shinyapps.io/CFISD_Covid_App/
-when: 1620481269.64169
+when: 1620482196.28444
 asMultiple: FALSE
 asStatic: FALSE

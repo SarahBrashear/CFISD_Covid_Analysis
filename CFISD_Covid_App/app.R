@@ -41,8 +41,8 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                     br(),
                                     
                                     mainPanel(
-                                       p("During the 2020-21 school year, Cypress-
-                                         Fairbanks ISD offered families the opportunity 
+                                       p("During the 2020-21 school year, Cypress-Fairbanks 
+                                         ISD offered families the opportunity 
                                          to choose whether students would attend 
                                          classes in person or virtually. At the 
                                          beginning of each quarterly Marking Period, 
