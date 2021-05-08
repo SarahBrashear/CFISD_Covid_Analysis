@@ -41,7 +41,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                     br(),
                                     
                                     mainPanel(
-                                       p("During the 2020-21 school year, Cypress 
+                                       p("During the 2020-21 school year, Cypress-
                                          Fairbanks ISD offered families the opportunity 
                                          to choose whether students would attend 
                                          classes in person or virtually. At the 
@@ -208,21 +208,32 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                     mainPanel(
    
                                         h3("Summary of Findings"),
-                                        p("Only 41% of CFISD students have been
+                                        p("Less than 41% of CFISD students have been
                                           learning on campus for the entirety of 
-                                          the school year. 31,000 were still learning 
+                                          the school year. 31,000 students were still learning 
                                           remotely at the end of the school 
                                           year, with high school students making 
                                           up the largest portion of remote learners.
                                           During the first semester, schools with
                                           high rates of students who are economically 
                                           disadvantaged saw lower rates of students
-                                          returning to campus. In the coming year,
+                                          returning to campus. Among secondary
+                                          schools, this gap persisted in the second
+                                          semester as well.
+                                          In the coming year,
                                           district leaders ought to allocate more 
                                           resources for schools who had lower rates
-                                          of in-person attendance this year, since 
+                                          of in-person attendance, since 
                                           those students are likely to need more
-                                          academic and developmental support."), 
+                                          academic and social-emotional support. 
+                                          Further analysis is needed to determine
+                                          what impact this will have on the existing
+                                          economic opportunity gap; though this 
+                                          ought to be a top priority of the district,
+                                          in line with CFISD's mission of providing",
+                                         em("opportunity for all.")
+                                          
+                                          ), 
                                         
                                         br(),
                                         
@@ -242,25 +253,31 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                         p("Similarly, surveys show that students
                                           recieving IEP services were often not served
                                           as well in a digital setting. Further 
-                                          student-level analysis may show how 
+                                          analysis of student-level data may show how 
                                           many students are in this category in CFISD, and
                                           how to best support them when they 
                                           return to campus."),
                                         br(),
                                         p(strong("Use additional types of data to
-                                                 diagnose which schools and students
+                                                 further diagnose which schools and students
                                                  have the greatest need.")),
                                         p("The data from my analysis ought to be 
                                           complemented by further analyses of
                                           student test scores,
-                                          parent and teacher surveys, and student
-                                          self-reflections in order to create a 
-                                          holistic landscape analysis and make
-                                          informed policy recommendations for 
-                                          post-pandemic recovery."),
+                                          parent and teacher surveys, student
+                                          self-reflections, and other  
+                                          holistic measures in order to make the 
+                                          most 
+                                          informed policy recommendations for the 
+                                          post-pandemic recovery phase."),
                                         br(),
-                                        h3("References")
-                                        
+                                        h3("References"),
+                                        br(),
+                                        img(src = "references.png", 
+                                            height = "90%", 
+                                            width = "90%",
+                                            style = "display: block; margin-left: 
+                                                 auto; margin-right: auto;")
                                         ),
                                     
                                   
@@ -268,6 +285,8 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
 
                            )))
 
+###############################################################################
+###############################################################################
 
 # Define server logic 
 server <- function(input, output) {
