@@ -57,7 +57,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                          high schools, as shown in the chart below."), 
                                         
                                        br(),
-                                       img(src = "bar_plot_clean.png", 
+                                       img(src = "bar_plot_final.png", 
                                            height = "90%", 
                                            width = "90%",
                                            style = "display: block; margin-left: 
@@ -208,7 +208,15 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                     mainPanel(
    
                                         h3("Summary of Findings"),
-                                        p("Less than 41% of CFISD students have been
+                                        p(strong("In the coming year,
+                                          district leaders ought to allocate more 
+                                          resources for schools who had lower rates
+                                          of in-person attendance,
+                                          since those students are", 
+                                        a(href="https://www.chalkbeat.org/2021/3/24/22347249/federal-government-data-schools-covid-remote",
+                                          "likely to need more
+                                          academic and social-emotional support.")),
+                                          "Less than 41% of CFISD students have been
                                           learning on campus for the entirety of 
                                           the school year. 31,000 students were still learning 
                                           remotely at the end of the school 
@@ -220,12 +228,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                           returning to campus. Among secondary
                                           schools, this gap persisted in the second
                                           semester as well.
-                                          In the coming year,
-                                          district leaders ought to allocate more 
-                                          resources for schools who had lower rates
-                                          of in-person attendance, since 
-                                          those students are likely to need more
-                                          academic and social-emotional support. 
+ 
                                           Further analysis is needed to determine
                                           what impact this will have on the existing
                                           economic opportunity gap; though this 
@@ -238,27 +241,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                         br(),
                                         
                                         h3("Recommendations For Further Analysis"),
-                                        p(strong("Use student-level data to analyze
-                                          racial trends.")),
-                                        p("A recently released federal survey
-                                          shows that across the country, white 
-                                          students returned to campus at higher 
-                                          rates than students of color, potentially
-                                          widening the racial opportunity gap. 
-                                          Future analyses should investigate to
-                                          what extent that trend exists in Cy-Fair."),
-                                        br(),
-                                        p(strong("Investigate the experience of 
-                                                 students with disabilities.")),
-                                        p("Similarly, surveys show that students
-                                          recieving IEP services were often not served
-                                          as well in a digital setting. Further 
-                                          analysis of student-level data may show how 
-                                          many students are in this category in CFISD, and
-                                          how to best support them when they 
-                                          return to campus."),
-                                        br(),
-                                        p(strong("Use additional types of data to
+                                        p(strong("1. Use additional types of data to
                                                  further diagnose which schools and students
                                                  have the greatest need.")),
                                         p("The data from my analysis ought to be 
@@ -270,6 +253,33 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                           most 
                                           informed policy recommendations for the 
                                           post-pandemic recovery phase."),
+                                        p(strong("2. Use student-level data to analyze
+                                          racial trends.")),
+                                        p("A ", 
+                                        a(href="https://ies.ed.gov/schoolsurvey/",
+                                          "recently released federal survey"),
+                                          "shows that across the country, white 
+                                          students returned to campus at higher 
+                                          rates than students of color, potentially",
+                                        a(href="https://www.chalkbeat.org/2021/3/24/22347249/federal-government-data-schools-covid-remote",
+                                          "widening the racial opportunity gap."),
+                                          "Future analyses should investigate to
+                                          what extent that trend exists in Cy-Fair."),
+                                        br(),
+                                        p(strong("3. Investigate the experience of 
+                                                 students with disabilities.")),
+                                        p("Similarly,",
+                                        a(href="https://ies.ed.gov/schoolsurvey/",
+                                          "the same federal survey"),
+                                          "shows that students
+                                          recieving IEP services were often not served
+                                          as well in a digital setting. Further 
+                                          analysis of student-level data may show how 
+                                          many students are in this category in CFISD, and
+                                          how to best support them when they 
+                                          return to campus."),
+                                        br(),
+
                                         br(),
                                         h3("References"),
                                         br(),
