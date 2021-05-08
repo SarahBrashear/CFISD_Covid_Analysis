@@ -32,7 +32,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                            # Panel 1
                            tabPanel("Overview",
                                     h1("Cypress-Fairbanks ISD 2020-21 Learning Landscape Analysis"),
-                                    p("Analyzing Return to School Questionnaire Data 
+                                    p("Analyzing 'Return to School' Questionnaire Data 
                                       from the 2020-21 School Year to Inform Equitable 
                                       Post-Pandemic Recovery", 
                                       style = "font-size:20px;"),
@@ -204,39 +204,29 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                            
                            # Panel 3
                            
-                           tabPanel("Implications for Policy & Practice",
+                           tabPanel("Findings",
                                     mainPanel(
-                                        h3("About the Project"),
-                                        h4("Findings"),
-                                        p("This project explores the relationship 
-                                          between socio-economic status and student 
-                                          achievement for each of the roughly 
-                                          13,000 school districts in the country. 
-                                          I grouped districts by their states 
-                                          since the majority of education policy 
-                                          decision-making happens at the state 
-                                          level. In each state, I found a positive 
-                                          correlation between SES and student 
-                                          achievement; however, the magnitude of 
-                                          correlations vary. I then built a 
-                                          predictive model that estimates that
-                                          students from a typical school 
-                                          district will perform slightly above 
-                                          grade-level on future assessments under 
-                                          a certain set of assumptions. Because 
-                                          I was interested in the variance between 
-                                          states, I also analyzed the posterior
-                                          distributions for three of the most 
-                                          influential states. Ultimately the variance 
-                                          between these states could be used to 
-                                          inform policy decisions in the future 
-                                          as state education agencies strategically 
-                                          allocate funding and support for post-pandemic 
-                                          recovery."), 
+   
+                                        h3("Summary of Findings"),
+                                        p("Only 41% of CFISD students have been
+                                          learning on campus for the entirety of 
+                                          the school year. 31,000 were still learning 
+                                          remotely at the end of the school 
+                                          year, with high school students making 
+                                          up the largest portion of remote learners.
+                                          During the first semester, schools with
+                                          high rates of students who are economically 
+                                          disadvantaged saw lower rates of students
+                                          returning to campus. In the coming year,
+                                          district leaders ought to allocate more 
+                                          resources for schools who had lower rates
+                                          of in-person attendance this year, since 
+                                          those students are likely to need more
+                                          academic and developmental support."), 
                                         
                                         br(),
                                         
-                                        h4("Recommendations For Further Analysis"),
+                                        h3("Recommendations For Further Analysis"),
                                         p(strong("Use student-level data to analyze
                                           racial trends.")),
                                         p("A recently released federal survey
@@ -253,12 +243,23 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                           recieving IEP services were often not served
                                           as well in a digital setting. Further 
                                           student-level analysis may show how 
-                                          many students are in this category, and
+                                          many students are in this category in CFISD, and
                                           how to best support them when they 
                                           return to campus."),
                                         br(),
-                                        
-                                        h4("Refrences")
+                                        p(strong("Use additional types of data to
+                                                 diagnose which schools and students
+                                                 have the greatest need.")),
+                                        p("The data from my analysis ought to be 
+                                          complemented by further analyses of
+                                          student test scores,
+                                          parent and teacher surveys, and student
+                                          self-reflections in order to create a 
+                                          holistic landscape analysis and make
+                                          informed policy recommendations for 
+                                          post-pandemic recovery."),
+                                        br(),
+                                        h3("References")
                                         
                                         ),
                                     
@@ -268,7 +269,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                            )))
 
 
-# Define server logic required to draw a histogram
+# Define server logic 
 server <- function(input, output) {
     
     output$school_images <- renderImage({
@@ -303,22 +304,89 @@ server <- function(input, output) {
     
     output$scatter_plot <- renderPlot({
         
-            
+        
         # Generate type based on input$selected_mp from ui
         if (input$selected_mp == "mp1_plot") {
-            {mp1_plot}
+            {
+                plot1 <- data %>%
+                rename(Type = type) %>%
+                ggplot(aes(x = perc_econ_dis,
+                           y = mp1_perc_oncampus,
+                           size = enrollment,
+                           color = Type)) +
+                geom_point(alpha = .7) +
+                geom_smooth(method = "lm", formula = y ~ poly(x, 2), color = "grey15", se = FALSE) +
+                labs(title = "Wealthier Schools Had More of their Students Opting to Learn In-Person",
+                     subtitle = "There was a strong negative correlation in Marking Period 1",
+                     x = "Percentage of Students Who are Economically Disadvantaged",
+                     y = "Percentage of Students Choosing In-Person School",
+                     caption = "Source: Cypress-Fairbanks ISD") +
+                theme_classic() 
+            
+            mp1_plot <- plot1 + scale_size(guide = 'none')
+                
+                mp1_plot}
         }
         
         else if (input$selected_mp == "mp2_plot") {
-            {mp2_plot}
+            {plot2 <- data %>%
+                rename(Type = type) %>%
+                ggplot(aes(x = perc_econ_dis,
+                           y = mp2_perc_oncampus,
+                           size = enrollment,
+                           color = Type)) +
+                geom_point(alpha = .7) +
+                geom_smooth(method = "lm", formula = y ~ poly(x, 2), color = "grey15", se = FALSE) +
+                labs(title = "Wealthier Schools Had More of their Students Opting to Learn In-Person",
+                     subtitle = "Correlation is Less Steep than Before, but Still Negative in Marking Period 2",
+                     x = "Percentage of Students Who are Economically Disadvantaged",
+                     y = "Percentage of Students Choosing In-Person School",
+                     caption = "Source: Cypress-Fairbanks ISD") +
+                theme(legend.position = "none") +
+                theme_classic() 
+            
+            mp2_plot <- plot2 + scale_size(guide = 'none')
+                mp2_plot}
         }
         
         else if (input$selected_mp == "mp3_plot") {
-            {mp3_plot}
+            {plot3 <- data %>%
+                rename(Type = type) %>%
+                ggplot(aes(x = perc_econ_dis,
+                           y = mp3_perc_oncampus,
+                           size = enrollment,
+                           color = Type)) +
+                geom_point(alpha = .7) +
+                geom_smooth(method = "lm", formula = y ~ poly(x, 2), color = "grey15", se = FALSE) +
+                labs(title = "Elementary Schools Now Have Largest Portions of Students In-Person",
+                     subtitle = "This Trend Applies Across the Range of Economic Opportunity",
+                     x = "Percentage of Students Who are Economically Disadvantaged",
+                     y = "Percentage of Students Choosing In-Person School",
+                     caption = "Source: Cypress-Fairbanks ISD") +
+                theme_classic() 
+            
+            mp3_plot <- plot3 + scale_size(guide = 'none')
+                mp3_plot}
         }
         
         else if (input$selected_mp == "mp4_plot") {
-            {mp4_plot}
+            {plot4 <- data %>%
+                rename(Type = type) %>%
+                ggplot(aes(x = perc_econ_dis,
+                           y = mp4_perc_oncampus,
+                           size = enrollment,
+                           color = Type)) +
+                geom_point(alpha = .7) +
+                geom_smooth(method = "lm", formula = y ~ poly(x, 2), color = "grey15", se = FALSE) +
+                labs(title = "More Students Across Grade Levels Opted for In Person School",
+                     subtitle = "Elementary Schools Continue to See Largest Rates On Campus in Marking Period 4",
+                     x = "Percentage of Students Who are Economically Disadvantaged",
+                     y = "Percentage of Students Choosing In-Person School",
+                     caption = "Source: Cypress-Fairbanks ISD") +
+                theme_classic() 
+            
+            mp4_plot <- plot4 + scale_size(guide = 'none')
+                mp4_plot}
         }
         
         

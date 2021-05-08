@@ -1,0 +1,12 @@
+name: CFISD_Covid_App
+title: CFISD_Covid_App
+username:
+account: sarahbrashear
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4098442
+bundleId: 4572971
+url: https://sarahbrashear.shinyapps.io/CFISD_Covid_App/
+when: 1620447701.30678
+asMultiple: FALSE
+asStatic: FALSE
